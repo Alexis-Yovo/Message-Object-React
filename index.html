@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+ //Définissez une constante messages dans le composant App, qui contiendra des messages,
+ // puis créez un composant <Messages /> (au pluriel) et un autre composant <Message /> (au singulier) qui affichera les messages se trouvant dans la constante.
+
+ const MESSAGES = [
+  { message : "React JS" },
+  { message : "React Native" },
+  { message : "Angular" },
+  { message : "Symfony" },
+  { message : "MongoDB" },
+ ];
+
+ // Composant Message (au singulier)
+ const Message = ({ message }) => {
+    return <div>{message}</div>;
+  };
+
+  // Composant Messages (au pluriel)
+  const Messages = ({ messages }) => {
+    return (
+      <div>
+        {messages.map((msg, index) => (
+          <Message key={index} message={msg.message} />
+        ))}
+      </div>
+    );
+  };
+
+  // Composant App
+  const App = () => {
+    return (
+      <div>
+        <Messages messages={MESSAGES} />
+      </div>
+    );
+  };
+
+
+ ReactDOM.createRoot(
+  document.querySelector("#root")
+ )
+  .render(
+   <div>
+   <App/>
+   </div>
+  )
+
+</script>
+</body>
+</html>
